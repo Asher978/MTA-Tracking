@@ -1,0 +1,17 @@
+{
+  "name": "mta",
+  "version": "1.0.0",
+  "description": "'MTA Tracking App'",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Asher S",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.2",
+    "morgan": "^1.9.0",
+    "nodemon": "^1.12.1",
+    "protobufjs": "^6.8.0"
+  }
+}
