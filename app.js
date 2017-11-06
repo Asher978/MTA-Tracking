@@ -23,8 +23,11 @@ server.listen(port, () => {
 
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
-})
-;
+});
+
+const mtaRoutes = require('./routes/mta-routes');
+app.use('/mta', mtaRoutes);
+
 app.get('*', (req, res) => {
   res.status(404).send('not found!');
 })
