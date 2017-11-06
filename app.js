@@ -3,7 +3,6 @@ const logger = require('morgan');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
-const ProtoBuf = require('protobufjs');
 
 const app = express();
 const server = require('http').Server(app);
