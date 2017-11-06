@@ -1,18 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
 import './App.css';
+import Mta from './components/Mta';
 
 class App extends Component {
+  constructor () {
+    super ();
+    this.state = {
+      field_id: null,
+      mtaData: null,
+      mtaDataLoaded: false,
+    }
+    this.handleOnChange = this.handleOnChange.bind(this);
+    this.handleMtaLookup = this.handleMtaLookup.bind(this);
+  }
+
+  handleOnChange (e) {
+    this.setState({ field_id: e.target.value })
+  }
+
+  handleMtaLookup () {
+    console.log('mta pressed!')
+    axios.post('/mta', {
+      field_id: this.state.field_id,
+    }).then(res => {
+      console.log(res);
+    }).catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Mta
+          handleMtaLookup={this.handleMtaLookup}
+          handleOnChange={this.handleOnChange}
+          field_id={this.state.field_id}
+        />
       </div>
     );
   }
