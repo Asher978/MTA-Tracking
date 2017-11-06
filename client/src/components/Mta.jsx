@@ -14,7 +14,18 @@ const Mta = props => {
       <li>36 for Train Lines - J, Z</li>
       <li>31 for Train Line - G</li>
       <li>11 for Staten Island Railway</li>
-      <input type="number" onChange={props.handleOnChange} />
+      <input type="number"
+        name="field_id"
+        value={props.field_id}
+        onChange={props.handleOnChange} 
+        placeholder="field id"
+      /> <br />
+      <input type="text" 
+        name="line"
+        value={props.line}
+        onChange={props.handleOnChange}
+        placeholder="Train Line"
+      /> <br />
       <input type="button" value="submit" onClick={props.handleMtaLookup} />
     </div>
   )

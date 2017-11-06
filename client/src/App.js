@@ -7,7 +7,8 @@ class App extends Component {
   constructor () {
     super ();
     this.state = {
-      field_id: null,
+      field_id: '',
+      line: '',
       mtaData: null,
       mtaDataLoaded: false,
     }
@@ -16,13 +17,18 @@ class App extends Component {
   }
 
   handleOnChange (e) {
-    this.setState({ field_id: e.target.value })
+    const name = e.target.name;
+    const value = e.target.value;
+    this.setState({
+      [name]: value,
+    });
   }
 
   handleMtaLookup () {
     console.log('mta pressed!')
     axios.post('/mta', {
       field_id: this.state.field_id,
+      line: this.state.line,
     }).then(res => {
       console.log(res);
     }).catch(err => console.log(err));
@@ -35,6 +41,7 @@ class App extends Component {
           handleMtaLookup={this.handleMtaLookup}
           handleOnChange={this.handleOnChange}
           field_id={this.state.field_id}
+          line={this.state.line}
         />
       </div>
     );
