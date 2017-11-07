@@ -2,6 +2,7 @@ require('dotenv').config();
 require('isomorphic-fetch');
 var GtfsRealtimeBindings = require('gtfs-realtime-bindings');
 var request = require('request');
+var _ = require('underscore');
 
 
 const MTA_API = process.env.mta_api;
@@ -30,7 +31,8 @@ let getData = (req, res, next) => {
 
 // api call to mta using request
 let getMta = (req, res, next) => {
-  var data = {};
+  var data = [];
+  var currentLine = `${req.body.line}`.toUpperCase();
   var requestSettings = {
     method: 'GET',
     url: `http://datamine.mta.info/mta_esi.php?key=${MTA_API}&feed_id=${req.body.field_id}`,
@@ -41,15 +43,24 @@ let getMta = (req, res, next) => {
       var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
       console.log(feed);
 
+      // filtering to show trip updates on a selected line
+      var tripData = feed.entity;
+      filteredTripData = _.filter(tripData, (tripData) => {
+        if (tripData.trip_update) {
+          return (tripData.trip_update.trip.route_id == currentLine);
+        }
+      });
+
       // feed.entity.forEach(function(entity) {
       //   if (entity) {
       //     console.log(entity.trip_update);
       //     data = entity
       //   }
       // });
-      
+
     }
-    res.locals.mta = feed;
+    // res.locals.mta = filteredTripData;
+    res.locals.mta = filteredTripData;
     next();
   })
 }
