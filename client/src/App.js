@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 import Mta from './components/Mta';
+import TrainTimes from './components/TrainTimes';
 
 class App extends Component {
   constructor () {
@@ -31,7 +32,20 @@ class App extends Component {
       line: this.state.line,
     }).then(res => {
       console.log(res.data);
+      this.setState({
+        mtaData: res.data.data,
+        mtaDataLoaded: true,
+      })
     }).catch(err => console.log(err));
+  }
+
+  renderTrainTimes () {
+    if (this.state.mtaDataLoaded) {
+      return <TrainTimes
+               mta={this.state.mtaData}
+               train={this.state.line}
+              />
+    }
   }
 
   render() {
@@ -43,6 +57,9 @@ class App extends Component {
           field_id={this.state.field_id}
           line={this.state.line}
         />
+
+        { this.renderTrainTimes() }
+
       </div>
     );
   }
