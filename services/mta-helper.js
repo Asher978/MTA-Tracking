@@ -41,7 +41,7 @@ let getMta = (req, res, next) => {
   request(requestSettings, function (error, response, body) {
     if (!error && response.statusCode == 200) {
       var feed = GtfsRealtimeBindings.FeedMessage.decode(body);
-      console.log(feed);
+      // console.log(feed);
 
       // filtering to show trip updates on a selected line
       var tripData = feed.entity;
