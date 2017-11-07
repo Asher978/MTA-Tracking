@@ -19,7 +19,7 @@
   *  init a call to MTA and fetch the train data (already done!) However, this needs to be prop looped thus setInterval logic needs to be implemented. (gap between each api call MUST be more than 30 secs per MTA docs)
 
   *  A component ro render the train data. Train data should include...
-    *  # of trains in route on that line
+    *  number of trains in route on that line
     *  time of arrival of trains to the user location
     
     
