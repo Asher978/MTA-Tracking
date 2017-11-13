@@ -19,6 +19,7 @@
     "gtfs-realtime-bindings": "0.0.4",
     "isomorphic-fetch": "^2.2.1",
     "morgan": "^1.9.0",
+    "mta-gtfs": "^1.1.0",
     "nodemon": "^1.12.1",
     "path": "^0.12.7",
     "request": "^2.83.0",
