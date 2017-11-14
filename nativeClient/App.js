@@ -1,9 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- * @flow
- */
-
 import React, { Component } from 'react';
 import {
   Platform,
@@ -11,11 +5,14 @@ import {
   Text,
   View
 } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 import MyTrain from './src/components/MyTrain';
 
-
-
 class App extends Component {
+  static navigationOptions = {
+    title: 'Home',
+  }
+
   render() {
     return (
       <View style={styles.container}>
@@ -24,6 +21,12 @@ class App extends Component {
     );
   }
 }
+
+const ModalStack = StackNavigator({
+  Home: {
+    screen: MyTrain
+  }
+})
 
 const styles = StyleSheet.create({
   container: {
