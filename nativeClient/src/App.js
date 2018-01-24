@@ -5,13 +5,10 @@ import {
   Text,
   View
 } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import MyTrain from './src/components/MyTrain';
+import MyTrain from './components/MyTrain';
 
 class App extends Component {
-  static navigationOptions = {
-    title: 'Home',
-  }
+  
 
   render() {
     return (
@@ -22,11 +19,6 @@ class App extends Component {
   }
 }
 
-const ModalStack = StackNavigator({
-  Home: {
-    screen: MyTrain
-  }
-})
 
 const styles = StyleSheet.create({
   container: {
