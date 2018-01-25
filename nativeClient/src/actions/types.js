@@ -1,0 +1,1 @@
+export const STOPS_LIST = 'stops_list';
