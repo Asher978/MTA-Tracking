@@ -8,7 +8,7 @@ class Train {
 
     train_stops = stops_array.filter((stop) => {
       if(stop.properties.Routes_ALL && stop.properties.Routes_ALL.includes(line)) {
-        return stop
+        return stop;
       }
     });
     return train_stops;
