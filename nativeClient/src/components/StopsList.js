@@ -19,11 +19,6 @@ class StopsList extends Component {
     return <Stop stop={stop} />;
   }
 
-  onButtonPress = (stop, feedId) => {
-
-    this.props.trainFetch(stop, feedId);
-  }
-
   render () {
     return (
     <ListView
