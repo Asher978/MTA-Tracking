@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, Image, ScrollView, TouchableOpacity } from 'react-native';
-import { getTrainStops } from '../actions';
+import { getTrainStops, getFeedId } from '../actions';
 import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 
@@ -42,6 +42,7 @@ class TrainsList extends Component {
   }
   
   onButtonPress = line => {
+    this.props.getFeedId(line.line);
     this.props.getTrainStops(line.line);
   }
 
@@ -75,4 +76,4 @@ const mapStateToProps = state => {
   return { stops };
 };
 
-export default connect(mapStateToProps, { getTrainStops })(TrainsList);
+export default connect(mapStateToProps, { getTrainStops, getFeedId })(TrainsList);
