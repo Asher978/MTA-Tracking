@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, ListView } from 'react-native';
 import Stop from './Stop';
 import { connect } from 'react-redux';
+// import { trainFetch } from '../actions';
 import _ from 'lodash';
 
 class StopsList extends Component {
@@ -21,6 +22,7 @@ class StopsList extends Component {
   render () {
     return (
     <ListView
+      enableEmptySections
       dataSource={this.dataSource}
       renderRow={this.renderRow}
     />
@@ -29,9 +31,10 @@ class StopsList extends Component {
 };
 
 const mapStateToProps = state => {
+  const { feedId } = state;
   
-  const stops = _.map(state.train.stops, (val) => {
-    return { ...val };
+  const stops = _.map(state.train, (val) => {
+    return { ...val, feedId };
   });
   
   return { stops };
