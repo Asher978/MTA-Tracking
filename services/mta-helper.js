@@ -68,13 +68,14 @@ let getMta = (req, res, next) => {
 
 // using MTA NPM package
 let mtaPackage = (req, res, next) => {
+  console.log(req.body);
   
   let mta = new Mta({
     key: `${MTA_API}`, // only needed for mta.schedule() method
     feed_id: req.body.field_id,                  // optional, default = 1
   });
 
-  mta.schedule(req.body.stop).then(function (result) {
+  mta.schedule(req.body.stop, req.body.feed_id).then(function (result) {
     console.log(result);
     res.locals.mta = result;
     next();
