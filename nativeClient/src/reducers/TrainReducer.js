@@ -1,11 +1,10 @@
-import { STOPS_LIST } from '../actions/types';
-const INITIAL_STATE = {
-  stops: null
-}
+import { STOPS_LIST, FEED_ID } from '../actions/types';
+const INITIAL_STATE = {};
+
 export default (state=INITIAL_STATE, action) => {
   switch (action.type) {
     case STOPS_LIST:
-      return { ...state, stops: action.payload }
+      return action.payload
     default:
       return state;
   }
